@@ -29,33 +29,7 @@
 <script>
 $(document).ready(function(){
   $("textarea").hide();
-  $("#again").hide();
-  
-  $("#search").click(function(){
-	  $.getJSON(encodeURI("https://api.lyrics.ovh/v1/"+$("#artist").val()+"/"+$("#title").val()), function(data){
-			$("form").hide();
-			$("textarea").show();
-			$("#again").show();
-			
-			$.each(data, function(key, value){	
-				if (key === "lyrics") $("textarea").val(value);
-				console.log(key);
-				console.log(value);
-			});
-			
-		}).fail(function(code)	{
-			if (code.status == 404) {
-				
-			}
-		});
-  });
-  
-  $("#again").click(function() {
-  		$("form").show();
-		$("textarea").hide();
-		$("#again").hide();
-  });
-  
+  $("#again").hide();  
 });
 
 if (!navigator.serviceWorker.controller) {
@@ -63,7 +37,6 @@ if (!navigator.serviceWorker.controller) {
          console.log("Service worker has been registered for scope: " + reg.scope);
      });
 }
-
 </script>
 
 </body>
