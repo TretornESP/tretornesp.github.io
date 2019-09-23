@@ -26,16 +26,13 @@
 <script>
 $(document).ready(function(){
   $("search").click(function(){
-	$.ajax({
-		url: "https://api.lyrics.ovh/v1/artist/title",
-		type: "get",
-		data: send,
-		dataType: 'json',
-		success: function(data){
-			console.log(data);
-			console.log(data.id);   
-		}
-	});
+	  $.getJSON("https://api.lyrics.ovh/v1/artist/title", function(data){
+
+			$.each(data, function(key, value){
+				console.log(key);
+				console.log(value);
+			});
+		});
   });
   
 });
