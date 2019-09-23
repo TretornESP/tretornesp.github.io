@@ -22,19 +22,36 @@
   </div>
   <button type="button" class="btn btn-primary" id="search">Search</button>
 </form>
-
+<textarea name="lyrics"></textarea>
+<button type="button" class="btn btn-primary" id="again">Again</button>
 <script>
 $(document).ready(function(){
-  console.log("CYKA");
+  $("textarea").hide();
+  $("#again").hide();
+  
   $("#search").click(function(){
-	  console.log("CLICK");
 	  $.getJSON(encodeURI("https://api.lyrics.ovh/v1/"+$("#artist").val()+"/"+$("#title").val()), function(data){
-
-			$.each(data, function(key, value){
+			$("form").hide();
+			$("textarea").show();
+			$("#again").show();
+			
+			$.each(data, function(key, value){	
+				if (key === "lyrics") $("textarea").val(value);
 				console.log(key);
 				console.log(value);
 			});
+			
+		}).fail(function(code)	{
+			if (code.status == 404) {
+				
+			}
 		});
+  });
+  
+  $("#again").click(function() {
+  		$("form").show();
+		$("textarea").hide();
+		$("#again").hide();
   });
   
 });
