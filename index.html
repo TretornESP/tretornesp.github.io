@@ -28,7 +28,7 @@ $(document).ready(function(){
   console.log("CYKA");
   $("#search").click(function(){
 	  console.log("CLICK");
-	  $.getJSON("https://api.lyrics.ovh/v1/"+$("#artist").val()+"/"+$("#title").val(), function(data){
+	  $.getJSON(encodeURI("https://api.lyrics.ovh/v1/"+$("#artist").val()+"/"+$("#title").val()), function(data){
 
 			$.each(data, function(key, value){
 				console.log(key);
