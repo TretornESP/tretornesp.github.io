@@ -1,3 +1,3 @@
 function ajaxProcesarFormulario() {
-  return {respuesta: "patata"};
+  return {status: "ok","mensajes":null,"url":"\/patata\/pototo\/"}"
 }
