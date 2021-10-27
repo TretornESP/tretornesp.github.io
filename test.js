@@ -1,3 +1,3 @@
 function ajaxProcesarFormulario() {
-  return "Patata";
+  return {respuesta: "patata"};
 }
