@@ -1,70 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html data-bs-theme="light">
+
 <head>
-  <title>Search Song Lyrics</title>
-  <meta charset="utf-8">
-  <meta name="theme-color" content="#2196f3"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  <link rel="manifest" href="manifest.json">
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home - Tretorn</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700&amp;display=swap">
+    <link rel="stylesheet" href="assets/css/styles.min.css">
 </head>
+
 <body>
-<form>
-  <div class="form-group">
-    <label for="artist">Artist</label>
-    <input type="text" class="form-control" id="artist" aria-describedby="artistHelp" placeholder="Coldplay">
-    <small id="artistHelp" class="form-text text-muted">Enter the artist of the song.</small>
-  </div>
-  <div class="form-group">
-    <label for="title">Title</label>
-    <input type="text" class="form-control" id="title" aria-describedby="titleHelp" placeholder="X&Y">
-    <small id="titleHelp" class="form-text text-muted">Enter title of the song.</small>
-  </div>
-  <button type="button" class="btn btn-primary" id="search">Search</button>
-</form>
-<textarea name="lyrics"></textarea>
-<button type="button" class="btn btn-primary" id="again">Again</button>
-<script>
-$(document).ready(function(){
-  $("textarea").hide();
-  $("#again").hide();
-  
-  $("#search").click(function(){
-	  $.getJSON(encodeURI("https://api.lyrics.ovh/v1/"+$("#artist").val()+"/"+$("#title").val()), function(data){
-			$("form").hide();
-			$("textarea").show();
-			$("#again").show();
-			
-			$.each(data, function(key, value){	
-				if (key === "lyrics") $("textarea").val(value);
-				console.log(key);
-				console.log(value);
-			});
-			
-		}).fail(function(code)	{
-			if (code.status == 404) {
-				
-			}
-		});
-  });
-  
-  $("#again").click(function() {
-  		$("form").show();
-		$("textarea").hide();
-		$("#again").hide();
-  });
-  
-  if (!navigator.serviceWorker.controller) {
-     navigator.serviceWorker.register("sw.js").then(function(reg) {
-         console.log("Service worker has been registered for scope: " + reg.scope);
-     });
-	}
-});
-
-</script>
-
+    <nav class="navbar navbar-expand-lg fixed-top portfolio-navbar gradient navbar-dark">
+        <div class="container"><a class="navbar-brand logo" href="#">Tretorn</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main class="page lanidng-page">
+        <section class="portfolio-block block-intro">
+            <div class="container">
+                <div class="avatar" style="background: url(&quot;assets/img/avatars/hAz5jLKS_400x400.jpg&quot;);background-size: contain;"></div>
+                <div class="about-me">
+                    <p>Hello! I am <strong>Xabier Iglesias</strong>. I work as a cybersecurity engineer and i love everything tech related.</p><a class="btn btn-outline-primary" role="button" href="https://github.com/TretornESP">Check out some cool projects</a>
+                </div>
+            </div>
+        </section>
+        <section class="portfolio-block photography">
+            <div class="container">
+                <div class="row g-0">
+                    <div class="col-md-6 col-lg-4 item zoom-on-hover" style="height: 243.359px;width: 382px;margin-left: 54px;"><a href="https://github.com/TretornESP/bloodmoon"><img class="img-fluid image" src="assets/img/nature/logo.png" style="width: 382px;height: 243px;"></a></div>
+                    <div class="col-md-6 col-lg-4 item zoom-on-hover" style="height: 243.359px;"><a href="https://github.com/TretornESP/FUSED/tree/main"><img class="img-fluid image" src="assets/img/nature/logo%20(1).png" style="width: 435px;height: 243px;"></a></div>
+                    <div class="col-md-6 col-lg-4 item zoom-on-hover" style="width: 366px;"><a href="https://extension.uned.es/actividad/idactividad/26313"><img class="img-fluid image" src="assets/img/tech/pexelspixabay60504_med.jpg" style="height: 243px;"></a></div>
+                </div>
+            </div>
+        </section>
+        <section class="portfolio-block call-to-action border-bottom">
+            <div class="container">
+                <div class="d-flex justify-content-center align-items-center content">
+                    <h3>Like what you see?</h3><a class="btn btn-outline-primary btn-lg" role="button" href="https://www.linkedin.com/in/xabier-iglesias-p%C3%A9rez-5429b3161/">Contact me on LinkedIn</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="page-footer py-3 border-top">
+        <div class="container my-4">
+            <div class="links"><a href="https://www.linkedin.com/in/xabier-iglesias-p%C3%A9rez-5429b3161/">Contact me</a><a href="https://github.com/TretornESP">Projects</a></div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/script.min.js"></script>
 </body>
+
 </html>
